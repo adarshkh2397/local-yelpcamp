@@ -27,9 +27,17 @@ app.use(methodOverride("_method"));
 app.use(flash());
 mongoose.set('useUnifiedTopology', true);
 mongoose.set('useFindAndModify', false);
-mongoose.connect("mongodb://localhost/yelp_camp", { useNewUrlParser: true });
-
+//mongoose.connect("mongodb://localhost/yelp_camp", { useNewUrlParser: true });
+//mongoose.connect("mongodb+srv://adarsh:<password>@cluster0-qm0tm.mongodb.net/test?retryWrites=true&w=majority", { useNewUrlParser: true });
 //seedDB();  //seed the database
+mongoose.connect('mongodb+srv://adarsh:Adarsh*123@cluster0-qm0tm.mongodb.net/test?retryWrites=true&w=majority', {
+	useNewUrlParser: true,
+	useCreateIndex: true
+}).then(() => {
+	console.log('Connected to DB!');
+}).catch(err => {
+	console.log('ERROR:', err.message);
+});
 
 //PASPORT CONFIG
 app.use(expressSession({

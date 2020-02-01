@@ -39,6 +39,8 @@ mongoose.connect('mongodb+srv://adarsh:Adarsh*123@cluster0-qm0tm.mongodb.net/tes
 	console.log('ERROR:', err.message);
 });
 
+app.locals.moment = require('moment'); 
+
 //PASPORT CONFIG
 app.use(expressSession({
 	secret            : "Boring this lecture is",
@@ -57,7 +59,7 @@ app.use((req, res, next) =>{
 	res.locals.success     = req.flash("success");
 	next();
 });
-app.locals.moment = require('moment');
+
 
 
 
